@@ -33,7 +33,11 @@ const ToDos = new ToDoList();
 
 ToDos.toDoList = JSON.parse(todoListContent);
 
-if (typeof command.a == "string") {
+if (command.l === true) {
+    ToDos.toDoList.map((element, index) =>
+        console.log(index + 1 + " - " + element.content)
+    );
+} else if (typeof command.a == "string") {
     ToDos.add(command.a);
 }
 
@@ -43,5 +47,3 @@ try {
 } catch (err) {
     console.error(err);
 }
-
-console.log(ToDos.toDoList);
