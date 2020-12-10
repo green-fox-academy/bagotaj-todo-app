@@ -1,1 +1,1 @@
-# bagotaj_todo_app
+# bagotaj-todo-app
