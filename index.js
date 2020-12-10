@@ -37,4 +37,7 @@ if (typeof command.a == "string") {
     ToDos.add(command.a);
 }
 
+todoListContent = JSON.stringify(ToDos.toDoList);
+fs.writeFileSync("todos.json", todoListContent);
+
 console.log(ToDos.toDoList);

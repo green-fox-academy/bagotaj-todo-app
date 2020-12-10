@@ -1,14 +1,1 @@
-[
-    {
-        "content": "Kutyát sétáltatni",
-        "status": true
-    },
-    {
-        "content": "Tejet venni",
-        "status": false
-    },
-    {
-        "content": "Megcsinálni a leckét",
-        "status": false
-    }
-]
+[{"content":"Kutyát sétáltatni","status":true},{"content":"Tejet venni","status":false},{"content":"Megcsinálni a leckét","status":false},{"content":"Megetetni a papagájt","status":false},{"content":"Hazatelefonálni","status":false}]
