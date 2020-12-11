@@ -49,10 +49,14 @@ const ToDos = new ToDoList();
 ToDos.toDoList = JSON.parse(todoListContent);
 
 if (command.l === true) {
+    if (ToDos.toDoList.length === 0) {
+        console.log("Nincs mára tennivalód! :)");
+    }
+
     ToDos.toDoList.map((element, index) =>
         console.log(index + 1 + " - " + element.content)
     );
-} else if (typeof command.a == "string") {
+} else if (typeof command.a === "string") {
     ToDos.add(command.a);
 }
 
