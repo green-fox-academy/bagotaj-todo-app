@@ -27,11 +27,15 @@ try {
 
 class ToDo {
     content;
-    status = false;
+    status;
 
-    constructor(content, status) {
+    constructor(content, status = false) {
         this.content = content;
         this.status = status;
+    }
+
+    comlete() {
+        this.status = true;
     }
 }
 
@@ -50,7 +54,12 @@ class ToDoList {
 
     toString() {
         return this.toDoList
-            .map((element, index) => `${index + 1} - ${element.content}`)
+            .map(
+                (element, index) =>
+                    `${index + 1} - [${element.status ? "x" : " "}] ${
+                        element.content
+                    }`
+            )
             .join("\n");
     }
 }
