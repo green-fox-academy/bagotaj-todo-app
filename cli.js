@@ -46,7 +46,12 @@ class ToDoList {
 
 const ToDos = new ToDoList();
 
-ToDos.toDoList = JSON.parse(todoListContent);
+let toDoListFromFile = JSON.parse(todoListContent);
+toDoListFromFile.forEach((element) => {
+    let newElement = new ToDo(element.content);
+    newElement.status = element.status;
+    ToDos.toDoList.push(newElement);
+});
 
 if (command.l === true) {
     if (ToDos.toDoList.length === 0) {
