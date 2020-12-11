@@ -29,16 +29,17 @@ class ToDo {
     content;
     status = false;
 
-    constructor(content) {
+    constructor(content, status) {
         this.content = content;
+        this.status = status;
     }
 }
 
 class ToDoList {
     toDoList = [];
 
-    add(todo) {
-        let newTodo = new ToDo(todo);
+    add(content, status) {
+        let newTodo = new ToDo(content, status);
 
         this.toDoList.push(newTodo);
     }
@@ -46,15 +47,19 @@ class ToDoList {
     delete(todo) {
         this.toDoList.splice(todo - 1, 1);
     }
+
+    toString() {
+        return this.toDoList
+            .map((element, index) => `${index + 1} - ${element.content}`)
+            .join("\n");
+    }
 }
 
 const ToDos = new ToDoList();
 
 let toDoListFromFile = JSON.parse(todoListContent);
 toDoListFromFile.forEach((element) => {
-    let newElement = new ToDo(element.content);
-    newElement.status = element.status;
-    ToDos.toDoList.push(newElement);
+    ToDos.add(element.content, element.status);
 });
 
 if (command.l === true) {
@@ -62,9 +67,7 @@ if (command.l === true) {
         console.log("Nincs mára tennivalód! :)");
     }
 
-    ToDos.toDoList.map((element, index) =>
-        console.log(index + 1 + " - " + element.content)
-    );
+    console.log(ToDos.toString());
 }
 
 if (typeof command.a === "string") {
