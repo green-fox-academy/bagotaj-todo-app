@@ -5,7 +5,7 @@ import fs from "fs";
 
 const command = minimist(process.argv);
 
-if (Object.keys(command).length == 1) {
+if (Object.keys(command).length === 1) {
     console.log(
         `Parancssori Todo applikáció
 ==========================
@@ -42,6 +42,10 @@ class ToDoList {
 
         this.toDoList.push(newTodo);
     }
+
+    delete(todo) {
+        this.toDoList.splice(todo - 1, 1);
+    }
 }
 
 const ToDos = new ToDoList();
@@ -69,6 +73,20 @@ if (typeof command.a === "string") {
     console.log(
         "Nem lehetséges új feladat hozzáadása: nincs megadva a feladat!"
     );
+}
+
+if (typeof command.r === "number") {
+    if (ToDos.toDoList.length < command.r) {
+        console.log(
+            "Nem lehetséges az eltávolítás: túlindexelési probléma adódott!"
+        );
+    } else {
+        ToDos.delete(command.r);
+    }
+} else if (command.r === true) {
+    console.log("Nem lehetséges az eltávolítás: nem adott meg indexet!");
+} else if (typeof command.r === "string") {
+    console.log("Nem lehetséges az eltávolítás: a megadott index nem szám!");
 }
 
 try {
