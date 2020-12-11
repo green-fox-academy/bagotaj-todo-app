@@ -101,6 +101,10 @@ if (typeof command.r === "number") {
     console.log("Nem lehetséges az eltávolítás: a megadott index nem szám!");
 }
 
+if (typeof command.c === "number") {
+    ToDos.toDoList[command.c - 1].comlete();
+}
+
 try {
     todoListContent = JSON.stringify(ToDos.toDoList);
     fs.writeFileSync("todos.json", todoListContent);
