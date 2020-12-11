@@ -1,5 +1,5 @@
 {
-    "name": "bagotaj_todo_app",
+    "name": "bagotaj-todo-app",
     "version": "1.0.0",
     "description": "",
     "main": "index.js",
@@ -13,6 +13,9 @@
     "keywords": [],
     "author": "",
     "license": "ISC",
+    "bin": {
+        "todo": "./cli.js"
+    },
     "bugs": {
         "url": "https://github.com/green-fox-academy/bagotaj_todo_app/issues"
     },

@@ -1,7 +1,22 @@
+#!/usr/bin/env node
+
 import minimist from "minimist";
 import fs from "fs";
 
 const command = minimist(process.argv);
+
+if (Object.keys(command).length == 1) {
+    console.log(
+        `Parancssori Todo applikáció
+==========================
+        
+Parancssori argumentumok:
+    -l   Kilistázza a feladatokat
+    -a   Új feladatot ad hozzá
+    -r   Eltávolít egy feladatot
+    -c   Teljesít egy feladatot`
+    );
+}
 
 let todoListContent;
 try {
