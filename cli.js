@@ -3,6 +3,8 @@
 import minimist from "minimist";
 import fs from "fs";
 
+import { ToDoList } from "./ToDoList.js";
+
 const command = minimist(process.argv);
 
 if (Object.keys(command).length === 1) {
@@ -25,45 +27,6 @@ try {
     console.error(err);
 }
 
-class ToDo {
-    content;
-    status;
-
-    constructor(content, status = false) {
-        this.content = content;
-        this.status = status;
-    }
-
-    comlete() {
-        this.status = true;
-    }
-}
-
-class ToDoList {
-    toDoList = [];
-
-    add(content, status) {
-        let newTodo = new ToDo(content, status);
-
-        this.toDoList.push(newTodo);
-    }
-
-    delete(todo) {
-        this.toDoList.splice(todo - 1, 1);
-    }
-
-    toString() {
-        return this.toDoList
-            .map(
-                (element, index) =>
-                    `${index + 1} - [${element.status ? "x" : " "}] ${
-                        element.content
-                    }`
-            )
-            .join("\n");
-    }
-}
-
 const ToDos = new ToDoList();
 
 let toDoListFromFile = JSON.parse(todoListContent);
@@ -72,7 +35,7 @@ toDoListFromFile.forEach((element) => {
 });
 
 if (command.l === true) {
-    if (ToDos.toDoList.length === 0) {
+    if (ToDos.getToDoList().length === 0) {
         console.log("Nincs mára tennivalód! :)");
     }
 
@@ -88,7 +51,7 @@ if (typeof command.a === "string") {
 }
 
 if (typeof command.r === "number") {
-    if (ToDos.toDoList.length < command.r) {
+    if (ToDos.getToDoList().length < command.r) {
         console.log(
             "Nem lehetséges az eltávolítás: túlindexelési probléma adódott!"
         );
@@ -102,11 +65,11 @@ if (typeof command.r === "number") {
 }
 
 if (typeof command.c === "number") {
-    ToDos.toDoList[command.c - 1].comlete();
+    ToDos.getToDoList()[command.c - 1].comlete();
 }
 
 try {
-    todoListContent = JSON.stringify(ToDos.toDoList);
+    todoListContent = JSON.stringify(ToDos.getToDoList());
     fs.writeFileSync("todos.json", todoListContent);
 } catch (err) {
     console.error(err);
