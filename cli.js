@@ -61,8 +61,14 @@ if (command.l === true) {
     ToDos.toDoList.map((element, index) =>
         console.log(index + 1 + " - " + element.content)
     );
-} else if (typeof command.a === "string") {
+}
+
+if (typeof command.a === "string") {
     ToDos.add(command.a);
+} else if (command.a === true) {
+    console.log(
+        "Nem lehetséges új feladat hozzáadása: nincs megadva a feladat!"
+    );
 }
 
 try {
