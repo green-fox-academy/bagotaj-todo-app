@@ -4,21 +4,18 @@ import minimist from "minimist";
 import fs from "fs";
 
 import { ToDoList } from "./ToDoList.js";
+import { errorHandling } from "./errorhandling.js";
 
 const command = minimist(process.argv);
 
 if (Object.keys(command).length === 1) {
-    console.log(
-        `Parancssori Todo applikáció
-==========================
-        
-Parancssori argumentumok:
-    -l   Kilistázza a feladatokat
-    -a   Új feladatot ad hozzá
-    -r   Eltávolít egy feladatot
-    -c   Teljesít egy feladatot`
-    );
+    errorHandling("noCommand");
 }
+
+// if (Object.keys(command) !== "l" || "a" || "r" || "c") {
+//     errorHandling("notACommand");
+//     errorHandling("noCommand");
+// }
 
 let todoListContent;
 try {
@@ -45,27 +42,31 @@ if (command.l === true) {
 if (typeof command.a === "string") {
     ToDos.add(command.a);
 } else if (command.a === true) {
-    console.log(
-        "Nem lehetséges új feladat hozzáadása: nincs megadva a feladat!"
-    );
+    errorHandling("commandA");
 }
 
 if (typeof command.r === "number") {
     if (ToDos.getToDoList().length < command.r) {
-        console.log(
-            "Nem lehetséges az eltávolítás: túlindexelési probléma adódott!"
-        );
+        errorHandling("commandROverIndexing");
     } else {
         ToDos.delete(command.r);
     }
 } else if (command.r === true) {
-    console.log("Nem lehetséges az eltávolítás: nem adott meg indexet!");
+    errorHandling("commandR");
 } else if (typeof command.r === "string") {
-    console.log("Nem lehetséges az eltávolítás: a megadott index nem szám!");
+    errorHandling("commandRNotANumber");
 }
 
 if (typeof command.c === "number") {
-    ToDos.getToDoList()[command.c - 1].comlete();
+    if (ToDos.getToDoList().length < command.c) {
+        errorHandling("commandCOverIndexing");
+    } else {
+        ToDos.getToDoList()[command.c - 1].comlete();
+    }
+} else if (command.c === true) {
+    errorHandling("commandC");
+} else if (typeof command.c === "string") {
+    errorHandling("commandCNotANumber");
 }
 
 try {
