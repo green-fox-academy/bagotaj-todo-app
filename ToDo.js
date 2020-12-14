@@ -7,7 +7,7 @@ export class ToDo {
         this.status = status;
     }
 
-    comlete() {
+    complete() {
         this.status = true;
     }
 
