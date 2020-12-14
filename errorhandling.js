@@ -1,58 +1,60 @@
-export function errorHandling(command) {
-    if (command === "noCommand") {
-        console.log(
-            `Parancssori Todo applikáció
+const errorHandlingHU = {
+    noCommand: `Parancssori Todo applikáció
 ==========================
-            
+                
 Parancssori argumentumok:
     -l   Kilistázza a feladatokat
     -a   Új feladatot ad hozzá
     -r   Eltávolít egy feladatot
-    -c   Teljesít egy feladatot`
-        );
+    -c   Teljesít egy feladatot`,
+    commandA: "Nem lehetséges új feladat hozzáadása: nincs megadva a feladat!",
+    notACommand: "Nem támogatott argumentum!",
+    commandR: "Nem lehetséges az eltávolítás: nem adott meg indexet!",
+    commandROverIndexing:
+        "Nem lehetséges az eltávolítás: túlindexelési probléma adódott!",
+    commandRNotANumber:
+        "Nem lehetséges az eltávolítás: a megadott index nem szám!",
+    commandC: "Nem lehetséges a feladat végrehajtása: nem adott meg indexet!",
+    commandCOverIndexing:
+        "Nem lehetséges a feladat végrehajtása: túlindexelési probléma adódott!",
+    commandCNotANumber:
+        "Nem lehetséges a feladat végrehajtása: a megadott index nem szám!",
+};
+
+export function errorHandling(command) {
+    if (command === "noCommand") {
+        console.log(errorHandlingHU.noCommand);
     }
 
     if (command === "notACommand") {
-        console.log("Nem támogatott argumentum!");
+        console.log(errorHandlingHU.notACommand);
     }
 
     if (command === "commandA") {
-        console.log(
-            "Nem lehetséges új feladat hozzáadása: nincs megadva a feladat!"
-        );
+        console.log(errorHandlingHU.commandA);
     }
 
     if (command === "commandROverIndexing") {
-        console.log(
-            "Nem lehetséges az eltávolítás: túlindexelési probléma adódott!"
-        );
+        console.log(errorHandlingHU.commandROverIndexing);
     }
 
     if (command === "commandR") {
-        console.log("Nem lehetséges az eltávolítás: nem adott meg indexet!");
+        console.log(errorHandlingHU.commandR);
     }
 
     if (command === "commandRNotANumber") {
-        console.log(
-            "Nem lehetséges az eltávolítás: a megadott index nem szám!"
-        );
+        console.log(errorHandlingHU.commandRNotANumber);
     }
 
     if (command === "commandCOverIndexing") {
-        console.log(
-            "Nem lehetséges a feladat végrehajtása: túlindexelési probléma adódott!"
-        );
+        console.log(errorHandlingHU.commandCOverIndexing);
     }
 
     if (command === "commandC") {
-        console.log(
-            "Nem lehetséges a feladat végrehajtása: nem adott meg indexet!"
-        );
+        console.log(errorHandlingHU.commandC);
     }
 
     if (command === "commandCNotANumber") {
-        console.log(
-            "Nem lehetséges a feladat végrehajtása: a megadott index nem szám!"
-        );
+        console.log(errorHandlingHU.commandCNotANumber);
     }
 }
