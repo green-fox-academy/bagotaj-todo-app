@@ -36,8 +36,8 @@ toDoListFromFile.forEach((element) => {
 });
 
 if (command.l === true) {
-    if (ToDos.getToDoList().length === 0) {
-        console.log("Nincs mára tennivalód! :)");
+    if (ToDos.getLength() === 0) {
+        errorHandling("noToDo");
     }
 
     console.log(ToDos.toString());
@@ -50,7 +50,7 @@ if (typeof command.a === "string") {
 }
 
 if (typeof command.r === "number") {
-    if (ToDos.getToDoList().length < command.r) {
+    if (ToDos.getLength() < command.r) {
         errorHandling("commandROverIndexing");
     } else {
         ToDos.delete(command.r);
@@ -62,7 +62,7 @@ if (typeof command.r === "number") {
 }
 
 if (typeof command.c === "number") {
-    if (ToDos.getToDoList().length < command.c) {
+    if (ToDos.getLength() < command.c) {
         errorHandling("commandCOverIndexing");
     } else {
         ToDos.complete(command.c);

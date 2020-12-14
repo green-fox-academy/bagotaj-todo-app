@@ -19,6 +19,7 @@ Parancssori argumentumok:
         "Nem lehetséges a feladat végrehajtása: túlindexelési probléma adódott!",
     commandCNotANumber:
         "Nem lehetséges a feladat végrehajtása: a megadott index nem szám!",
+    noToDo: "Nincs mára tennivalód! :)",
 };
 
 export function errorHandling(command) {
@@ -56,5 +57,9 @@ export function errorHandling(command) {
 
     if (command === "commandCNotANumber") {
         console.log(errorHandlingHU.commandCNotANumber);
+    }
+
+    if (command === "noToDo") {
+        console.log(errorHandlingHU.noToDo);
     }
 }

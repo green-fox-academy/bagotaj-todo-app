@@ -7,6 +7,10 @@ export class ToDoList {
         return this.toDoList;
     }
 
+    getLength() {
+        return this.toDoList.length;
+    }
+
     add(content, status) {
         let newTodo = new ToDo(content, status);
 
