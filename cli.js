@@ -8,14 +8,18 @@ import { errorHandling } from "./errorhandling.js";
 
 const command = minimist(process.argv);
 
-if (Object.keys(command).length === 1) {
+if (command._.length === 2 && Object.keys(command).length === 1) {
+    errorHandling("noCommand");
+} else if (
+    command._.length > 2 ||
+    !Object.keys(command).every((element) =>
+        ["_", "l", "a", "r", "c"].includes(element)
+    )
+) {
+    errorHandling("notACommand");
+    console.log();
     errorHandling("noCommand");
 }
-
-// if (Object.keys(command) !== "l" || "a" || "r" || "c") {
-//     errorHandling("notACommand");
-//     errorHandling("noCommand");
-// }
 
 let todoListContent;
 try {
