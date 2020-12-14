@@ -17,6 +17,10 @@ export class ToDoList {
         this.toDoList.splice(todo - 1, 1);
     }
 
+    complete(elementNumber) {
+        this.toDoList[elementNumber - 1].complete();
+    }
+
     toString() {
         return this.toDoList
             .map((element, index) => `${index + 1} - ${element.toString()}`)

@@ -65,7 +65,7 @@ if (typeof command.c === "number") {
     if (ToDos.getToDoList().length < command.c) {
         errorHandling("commandCOverIndexing");
     } else {
-        ToDos.getToDoList()[command.c - 1].complete();
+        ToDos.complete(command.c);
     }
 } else if (command.c === true) {
     errorHandling("commandC");
