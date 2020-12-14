@@ -23,7 +23,7 @@ if (command._.length === 2 && Object.keys(command).length === 1) {
 
 let todoListContent;
 try {
-    todoListContent = fs.readFileSync("todos.json");
+    todoListContent = fs.readFileSync("./data/todos.json");
 
     const ToDos = new ToDoList();
 
@@ -71,7 +71,7 @@ try {
     }
 
     todoListContent = JSON.stringify(ToDos.getToDoList());
-    fs.writeFileSync("todos.json", todoListContent);
+    fs.writeFileSync("./data/todos.json", todoListContent);
 } catch (err) {
     console.error(err);
 }
